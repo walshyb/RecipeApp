@@ -47,3 +47,19 @@ $(document).on("click", "#logout-btn", function(){
     alert(Parse.User.current().getUsername());
     Parse.User.logOut();
 });
+
+/*This will populate homepage with latest posted recipes*/
+$(document).on("pagebeforecreate", "#main-page", function(){
+    $.ajax({
+        type: "POST",
+        url:'xxx',
+        data: {queryType: "homepage"},
+        success: function(results)
+        {
+            alert(results);    //alerts text echoed from php script.  only temporary
+        },
+        error: function (error) {
+            alert("Error: " + error.message);
+        }
+    });
+});
