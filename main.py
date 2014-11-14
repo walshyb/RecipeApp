@@ -4,31 +4,25 @@
 import webapp2
 import os, sys
 from Scripts import ParsePy
-#import cgi #unnecessary
+from Scripts import ActionHandler
 
-queryType = "No queryType was passed"
-ParsePy.APPLICATION_ID = "xxx"
-ParsePy.MASTER_KEY = "xxx"
+#queryType = "No queryType was passed"
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
-        self.response.headers['Access-Control-Allow-Origin'] = '*'
-        #do something
         
-        #gameScore = ParsePy.ParseObject("GameScore")
-        #gameScore.score = 1337
-        #gameScore.playerName = "Sean Plott"
-        #gameScore.cheatMode = False
-        #gameScore.save()
+        self.response.write('Hello world!<br><br>')
+        self.response.headers['Access-Control-Allow-Origin'] = '*'
+        self.response.write(ActionHandler.getHomepage())
 
     def post(self):     
-        queryType = self.request.get("queryType")
+        action = self.request.get("queryType")
         self.response.headers.add_header('Access-Control-Allow-Origin', '*')
         self.response.headers['Content-Type'] = 'text/plain'
+        
         #self.response.write(cgi.escape(self.request.get('var')))
-        self.response.write(queryType)
-
+        #self.response.write(queryType)
+        
     def options(self):      
         self.response.headers['Access-Control-Allow-Origin'] = '*'
         self.response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
