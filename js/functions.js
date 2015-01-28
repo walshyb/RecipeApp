@@ -52,14 +52,25 @@ $(document).on("click", "#logout-btn", function(){
 $(document).on("pagebeforecreate", "#main-page", function(){
     $.ajax({
         type: "POST",
-        url:'xxx',
+        url:'http://www.rich-city-762.appspot.com',
+        //url: 'http://localhost:28080',
         data: {queryType: "homepage"},
         success: function(results)
         {
-            alert(results);    //alerts text echoed from php script.  only temporary
+            //alert(results);    //alerts text echoed from php script.  only temporary  
+            //var stringArr = JSON.stringify(results);
+            var realArr = $.parseJSON(results);
+            console.log(realArr);
+            
+            for(var i = 0; i < realArr.length; i++)
+            {
+                $('#homepage-results').append('<li class="ui-li-has-thumb ui-first-child homepage-food-li"><a href="#" id="' + realArr[i].recipeId + '" class="ui-btn ui-btn-icon-right ui-icon-carat-r"><img id="food-image" src="' + realArr[i].pictureLocation +'"/><br>' + realArr[i].name +'<br>Rating: ' + realArr[i].rating +'/10</a></li>');
+            }
+            
+            
         },
         error: function (error) {
-            alert("Error: " + error.message);
+            console.log(error);
         }
     });
 });

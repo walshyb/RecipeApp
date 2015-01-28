@@ -1,0 +1,53 @@
+#food-image
+{
+    width: 500px;
+}
+
+ul#homepage-results
+{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+li.homepage-food-li
+{
+    width: 85%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 670px)
+{
+    #food-image
+    {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 432px)
+{
+    #food-image
+    {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 370px)
+{
+    #food-image
+    {
+        width: 175px;
+    }
+    
+    .homepage-food-li
+    {
+        width: 100%;
+    }
+    
+    ul#homepage-results
+    {
+        padding-left: 7px;
+    }
+}

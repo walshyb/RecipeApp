@@ -14,9 +14,9 @@ def getHomepage():
         query = query.lte("recipeId", 1000)
         results = query.fetch()
         
-        allResults = []
+        allResults = []        
         
         for i in range(0, len(results)):
-            allResults.append({'name': results[i].name, 'rating': results[i].rating, 'ingredients': results[i].ingredients, 'pictureLocation': results[i].pictureLocation, "creator": results[i].creator, 'recipeId': results[i].recipeId})
+            allResults.append({'name': str(results[i].name), 'rating': str(results[i].rating), 'ingredients': str(results[i].ingredients), 'pictureLocation': str(results[i].pictureLocation), "creator": str(results[i].creator), 'recipeId': str(results[i].recipeId)})
             
-        return json.dumps(allResults)
+        return json.JSONEncoder().encode(allResults)

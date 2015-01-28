@@ -19,6 +19,7 @@ class MainHandler(webapp2.RequestHandler):
         action = self.request.get("queryType")
         self.response.headers.add_header('Access-Control-Allow-Origin', '*')
         self.response.headers['Content-Type'] = 'text/plain'
+        self.response.write(ActionHandler.getHomepage())
         
         #self.response.write(cgi.escape(self.request.get('var')))
         #self.response.write(queryType)
